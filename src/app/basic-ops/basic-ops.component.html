@@ -1,0 +1,34 @@
+<div class="d-grid me-2 d-md-flex justify-content-md-end">
+    <button mat-raised-button color="primary" 
+        (click)="pdf.saveAs('demo-content.pdf')">Download</button>
+</div>
+<kendo-pdf-export #pdf margin="2cm">
+    <div class="d-grid me-2 d-md-flex justify-content-md-center">
+        <button mat-raised-button color="primary" *ngIf="passed > 0" >Correct : {{passed}} / {{noOfQ}}</button> 
+         <button mat-raised-button class="ms-5"  *ngIf="failed > 0" color="warn">Wrong : {{failed}}</button>
+    </div>
+    <table class="mt-2 root-table">
+        <tr *ngFor="let subList of queryList">
+            <td *ngFor="let q of subList">
+                <table class="ms-2 mt-2 input-text">
+                    <tr >
+                        <td align="center">{{q.inputs[0]}}</td>
+                    </tr>
+                    <tr>
+                        <td align="center"><span class="me-3">{{opSymbol}} {{q.inputs[1]}}</span></td>
+                    </tr>
+                    <tr>
+                        <td> <mat-form-field color="primary">
+                                <mat-label></mat-label>
+                                <input matInput type="number" (keyup)="validateAns($event, q)" (change)="validateAns($event, q)">
+                            </mat-form-field>
+                            <mat-icon color="warn" *ngIf="q.status == 'F'">close</mat-icon>
+                            <mat-icon color="primary" *ngIf="q.status == 'S'">check</mat-icon>
+                        </td>
+                    </tr>
+                    <!-- <caption  style="caption-side:top">{{q.no}}</caption> -->
+                </table>
+            </td>
+        </tr>
+    </table>
+</kendo-pdf-export>
