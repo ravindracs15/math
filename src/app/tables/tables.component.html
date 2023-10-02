@@ -1,0 +1,18 @@
+<div class="d-grid me-2 mt-5 d-md-flex justify-content-md-center">
+    <button mat-raised-button color="primary" *ngIf="passed > 0" >Correct : {{passed}} / {{noOfQ}}</button> 
+     <button mat-raised-button class="ms-5"  *ngIf="failed > 0" color="warn">Wrong : {{failed}}</button>
+</div>
+<table class="mt-2 root-table" style="width:30%;">
+    <tr *ngFor="let row of queryList">
+        <td align="center">{{row.inputs[0]}}</td>
+        <td align="center">*</td>
+        <td align="center">{{row.inputs[1]}}</td>
+        <td style="width: 200px;">
+            <mat-form-field color="primary" style="width: 150px;" class="mt-3">
+                <input matInput type="number" (keyup)="validateAns($event, row)" (change)="validateAns($event, row)">
+            </mat-form-field>
+            <mat-icon color="warn" *ngIf="row.status == 'F'">close</mat-icon>
+            <mat-icon color="primary" *ngIf="row.status == 'S'">check</mat-icon>
+        </td>
+    </tr>
+</table>

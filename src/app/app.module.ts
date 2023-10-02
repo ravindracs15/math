@@ -22,13 +22,15 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { AdditionComponent } from './basic-ops/basic-ops.component';
 import { HeaderComponent } from './header/header.component';
 import { PDFExportModule } from "@progress/kendo-angular-pdf-export";
+import { TablesComponent } from './tables/tables.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AdditionComponent,
-    HeaderComponent
+    HeaderComponent,
+    TablesComponent
   ],
   imports: [
     BrowserModule,

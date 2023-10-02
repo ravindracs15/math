@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MathService } from '../math-service.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private mService: MathService) {
   }
   selPath ='';
   changeMathType(val: string) {
@@ -17,7 +17,9 @@ export class HeaderComponent {
   }
 
   ngOnInit() {
-    this.selPath = window.location.pathname.split('/')[1]
+    this.mService.select().subscribe(v => {
+      this.selPath = v;
+    })
   }
 }
 

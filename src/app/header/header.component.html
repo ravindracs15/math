@@ -1,5 +1,10 @@
 <div class="example-button-row center">
-        <button mat-raised-button (click)="changeMathType('addition')"  [color]="selPath == 'addition' || !selPath ? 'primary' : ''">Addition</button>
-        <button mat-raised-button (click)="changeMathType('subtraction')" [color]="selPath == 'subtraction' ? 'primary' : ''">Subtraction</button>
-        <button mat-raised-button (click)="changeMathType('multiplication')"  [color]="selPath == 'multiplication' ? 'primary' : ''" >Multiplication</button>
+        <button mat-raised-button (click)="changeMathType('addition')"
+                [color]="selPath == 'addition' || !selPath ? 'primary' : ''">Addition</button>
+        <button mat-raised-button (click)="changeMathType('subtraction')"
+                [color]="selPath == 'subtraction' ? 'primary' : ''">Subtraction</button>
+        <button mat-raised-button (click)="changeMathType('multiplication')"
+                [color]="selPath == 'multiplication' ? 'primary' : ''">Multiplication</button>
+        <button mat-raised-button (click)="changeMathType('tables')"
+                [color]="selPath == 'tables' ? 'primary' : ''">Tables</button>
 </div>
