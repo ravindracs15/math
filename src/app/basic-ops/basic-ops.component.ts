@@ -11,9 +11,10 @@ import { MathService } from '../math-service.service';
 
 export class AdditionComponent {
   numRange = 100;
-  noOfQ = 30;
+  noOfQ = 50;
   passed = 0;
   failed = 0;
+  perCompleted=0;
   @Output() opTypeChange = new EventEmitter<string>();
   queryList: any[] = [];
 
@@ -41,8 +42,8 @@ export class AdditionComponent {
   generate() {
     let subList = []
     for (let i = 1; i <= this.noOfQ; i++) {
-      let n1 = Math.floor(Math.random() * this.numRange);
-      let n2 = Math.floor(Math.random() * this.numRange);
+      let n1 = Math.floor(10 + Math.random() * this.numRange);
+      let n2 = Math.floor(10 + Math.random() * this.numRange);
       if (this.opType == Constants.SUB && n1 < n2) {
         let t = n2;
         n2 = n1;
@@ -90,6 +91,7 @@ export class AdditionComponent {
     }
     this.passed = pass;
     this.failed = fail;
+    this.perCompleted = (this.passed*100)/this.noOfQ
   }
 
 }

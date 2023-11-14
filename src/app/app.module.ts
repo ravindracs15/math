@@ -23,7 +23,7 @@ import { AdditionComponent } from './basic-ops/basic-ops.component';
 import { HeaderComponent } from './header/header.component';
 import { PDFExportModule } from "@progress/kendo-angular-pdf-export";
 import { TablesComponent } from './tables/tables.component';
-
+import { MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import { TablesComponent } from './tables/tables.component';
     MatBadgeModule,
     MatSortModule,
     MatTooltipModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

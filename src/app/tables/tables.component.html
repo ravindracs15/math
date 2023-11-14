@@ -1,6 +1,10 @@
 <div class="d-grid me-2 mt-5 d-md-flex justify-content-md-center">
-    <button mat-raised-button color="primary" *ngIf="passed > 0" >Correct : {{passed}} / {{noOfQ}}</button> 
-     <button mat-raised-button class="ms-5"  *ngIf="failed > 0" color="warn">Wrong : {{failed}}</button>
+    <mat-form-field color="primary" style="width: 200px;" >
+        <mat-label>Select Tabel</mat-label>
+        <input matInput type="number"  [(ngModel)]="selectedTable" (keyup)="changeTable($event)" (change)="changeTable($event)">
+    </mat-form-field>
+    <button mat-raised-button class="mt-2 ms-5" color="primary" *ngIf="passed > 0" >Correct : {{passed}} / {{noOfQ}}</button> 
+    <button mat-raised-button class="mt-2 ms-5"  *ngIf="failed > 0" color="warn">Wrong : {{failed}}</button>
 </div>
 <table class="mt-2 root-table" style="width:30%;">
     <tr *ngFor="let row of queryList">

@@ -5,7 +5,10 @@
 <kendo-pdf-export #pdf margin="2cm">
     <div class="d-grid me-2 d-md-flex justify-content-md-center">
         <button mat-raised-button color="primary" *ngIf="passed > 0" >Correct : {{passed}} / {{noOfQ}}</button> 
-         <button mat-raised-button class="ms-5"  *ngIf="failed > 0" color="warn">Wrong : {{failed}}</button>
+        <button mat-raised-button class="ms-5"  *ngIf="failed > 0" color="warn">Wrong : {{failed}}</button>
+    </div>
+    <div class="d-grid me-2 d-md-flex justify-content-md-center">
+        <mat-progress-bar *ngIf="passed > 0" class="mt-2" style="width: 40%;" color="primary"  mode="determinate" [value]="perCompleted"></mat-progress-bar>
     </div>
     <table class="mt-2 root-table">
         <tr *ngFor="let subList of queryList">

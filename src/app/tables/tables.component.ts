@@ -14,25 +14,28 @@ export class TablesComponent {
   noOfQ=20;
   constructor(private activeRoutedService : ActivatedRoute, private mService: MathService) {
   }
+  selectedTable=0;
   ngOnInit() {
     this.activeRoutedService.data.subscribe(data => {
        this.mService.next(Constants.TABLES);
     });
+    this.selectedTable = Math.ceil(2 + (Math.random() * this.noOfQ));
     this.generate();
   }
   queryList: any[] = [];
 
+  changeTable($event:any){
+      console.log($event);
+      this.generate();
+  }
   generate() {
-    let n1 = Math.ceil(Math.random() * this.noOfQ);
-    n1 = Math.max(n1, 2);
+    this.queryList = [];
     for (let i = 1; i <= 20; i++) {
-      let q = { 'ans': i*n1, 'inputs': [i, n1], 'status': '', 'no': i };
+      let q = { 'ans': i*this.selectedTable, 'inputs': [i, this.selectedTable], 'status': '', 'no': i };
       this.queryList.push(q);
     }
   }
   validateAns($event: any, q: any) {
-    console.log($event.target.value);
-    console.log(q);
     if (q.ans == $event.target.value) {
       q.status = 'S';
     } else {

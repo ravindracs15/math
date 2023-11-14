@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdditionComponent } from './basic-ops/basic-ops.component';
 import { Constants } from './constnants';
 import { TablesComponent } from './tables/tables.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   { path: '', component: AdditionComponent, data:{opType: Constants.ADD}}, 
@@ -14,6 +15,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class AppRoutingModule { }
